@@ -1,6 +1,6 @@
 - [x] Boilerplate
-- [] Sky
-- [] Textures and images
+- [x] Sky
+- [x] Textures and images
 - [] Ground
 - [] Keyboard inputs
 - [] Player
