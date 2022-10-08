@@ -1,6 +1,6 @@
 import { usePlane } from '@react-three/cannon';
 import { groundTexture } from '../images/textures';
-import { useStore } from '@react-three/fiber';
+import { useStore } from '../hooks/useStore';
 
 export const Ground = () => {
     const [ref] = usePlane(() => ({
@@ -16,11 +16,9 @@ export const Ground = () => {
         <mesh
             onClick={(e) => {
                 e.stopPropagation();
-                const [x, y, z] = Object.values(e.point).map(val => Math.floor(val));
-            addCube(x, y, z);
-
+                const [x, y, z] = Object.values(e.point).map(val => Math.ceil(val));
+                addCube(x, y, z);
             }}
-
             ref={ref}>
             <planeBufferGeometry attach="geometry" args={[100, 100]} />
             <meshStandardMaterial attach="material" map={groundTexture} />
