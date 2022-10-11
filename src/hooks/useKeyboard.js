@@ -3,8 +3,8 @@ import { useCallback, useEffect, useState } from 'react';
 function actionByKey(key) {
     const keyActionMap = {
         KeyW: 'moveForward',
-        KeyA: 'moveLeft',
         KeyS: 'moveBackward',
+        KeyA: 'moveLeft',
         KeyD: 'moveRight',
         Space: 'jump',
         Digit1: 'dirt',
@@ -18,7 +18,7 @@ function actionByKey(key) {
 
 export const useKeyboard = () => {
     const [actions, setActions] = useState({
-        moveForwardd: false,
+        moveForward: false,
         moveBackward: false,
         moveLeft: false,
         moveRight: false,
@@ -57,7 +57,6 @@ export const useKeyboard = () => {
     useEffect(() => {
         document.addEventListener('keydown', handleKeyDown);
         document.addEventListener('keyup', handleKeyUp);
-
         return () => {
             document.removeEventListener('keydown', handleKeyDown);
             document.removeEventListener('keyup', handleKeyUp);
