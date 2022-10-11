@@ -9,8 +9,8 @@
 -   [x] Movement
 -   [x] State management
 -   [x] Cubes
--   [] Adding cubes
--   [] Removing cubes
+-   [x] Adding cubes
+-   [x] Removing cubes
 -   [] Cube type selector
 -   [] Save world in localstorage
 -   [] Hover state on cubes
