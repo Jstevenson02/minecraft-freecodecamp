@@ -1,7 +1,7 @@
-import { useSphere } from '@react-three/cannon';
 import { useFrame, useThree } from '@react-three/fiber';
-import { Vector3 } from 'three';
+import { useSphere } from '@react-three/cannon';
 import { useEffect, useRef } from 'react';
+import { Vector3 } from 'three';
 import { useKeyboard } from '../hooks/useKeyboard';
 
 const JUMP_FORCE = 4;
@@ -18,19 +18,16 @@ export const Player = () => {
         position: [0, 1, 0],
     }));
 
-    // useRef tracks sphere velocity
     const vel = useRef([0, 0, 0]);
     useEffect(() => {
         api.velocity.subscribe((v) => (vel.current = v));
     }, [api.velocity]);
 
-    // useRef tracks sphere location
     const pos = useRef([0, 0, 0]);
     useEffect(() => {
         api.position.subscribe((p) => (pos.current = p));
     }, [api.position]);
 
-    // glue camera to useRef to create player
     useFrame(() => {
         camera.position.copy(
             new Vector3(pos.current[0], pos.current[1], pos.current[2])
@@ -55,6 +52,7 @@ export const Player = () => {
             .normalize()
             .multiplyScalar(SPEED)
             .applyEuler(camera.rotation);
+
         api.velocity.set(direction.x, vel.current[1], direction.z);
 
         if (jump && Math.abs(vel.current[1]) < 0.05) {
